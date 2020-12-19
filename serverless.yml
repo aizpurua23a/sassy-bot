@@ -1,0 +1,30 @@
+service: chult-stats-py
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  PythonRequirements:
+
+
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: eu-west-1
+  environment:
+    TELEGRAM_TOKEN: ${env:TELEGRAM_TOKEN}
+    CHARACTER_DEATHS: 5
+    SESSIONS: 14
+
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: chult-bot
+          method: post
+          cors: true

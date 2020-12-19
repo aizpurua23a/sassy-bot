@@ -1,0 +1,14 @@
+{
+  "name": "chult-stats-py",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "a23a <aizpurua23a@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "serverless-python-requirements": "^5.1.0"
+  }
+}
