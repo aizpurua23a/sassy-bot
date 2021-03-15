@@ -42,11 +42,11 @@ EULOGY_ANSWER = [
     "- Droplette. Died in battle fightng fiercely. Your death shall have its vengeance.",
     "- Bismarck. He was the best boy. He smiles at us from his afterlife in doggy heaven.",
     "- F for Summerwise. Our time together was short, but well spent."
-    "May you rest and meet Moonbeam Lillyfall in the endless prairies of Dragon-Heaven.\n",
+    "May you rest and meet Moonbeam Lillyfall in the endless prairies of Dragon-Heaven.",
     "- Tom Bombadol. He bewitched us all with his music, but in the end he couldn't resist the power of his spells.",
     "- Vom. He kidnapped our hearts and our druid and left. Your shady ass will always be remembered.",
     "- Merion el Sibilino. He was too wise for hiw own good. We hope for his quick escape from Virion's evil hands.",
-    "- Saska. The world wasn't ready for a nice yuan-ti ready to look for a cure. We'll cry your loss."
+    "- Saska. The world wasn't ready for a nice yuan-ti ready to look for a cure. We'll cry your loss.\n"
 
     "May Othgoroth have mercy on their souls."
 ]
