@@ -9,15 +9,17 @@ custom:
   PythonRequirements:
 
 
-
 provider:
   name: aws
   runtime: python3.8
   region: eu-west-1
+  lambdaHashingVersion: 20201221
+  apiGateway:
+    shouldStartNameWithService: true
   environment:
     TELEGRAM_TOKEN: ${env:TELEGRAM_TOKEN}
-    CHARACTER_DEATHS: 7
-    SESSIONS: 15
+    CHARACTER_DEATHS: 11
+    SESSIONS: 26
 
 
 functions:
