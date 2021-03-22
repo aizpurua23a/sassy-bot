@@ -69,9 +69,18 @@ def configure_telegram():
 
 def get_dice_roll_result(text):
     number_of_dice, type_of_dice = text.replace(' ', '').split('d')
+    type_of_dice = type_of_dice.split('+')[0].split('-')[0]
+
     sum = 0
     for _ in range(int(number_of_dice)):
-        sum += randint(1, int(type_of_dice)+1)
+        sum += randint(1, int(type_of_dice))
+
+    if '+' in text:
+        return [str(sum + int(text.split('+')[1]))]
+
+    if '-' in text:
+        return [str(sum - int(text.split('-')[1]))]
+
     return [str(sum)]
 
 
