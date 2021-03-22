@@ -57,6 +57,8 @@ FENTHAZA_ANSWER = ["Do you mean \"Té-en-taza\"?"]
 
 TE_EN_TAZA_ANSWER = ["Give me a wisdom saving throw!"]
 
+GORRITI_ANSWER = ["Did you hear the tragedy of Gorriti the town? Its a story Tim will absolutely tell you..."]
+
 
 def configure_telegram():
     telegram_token = os.environ.get('TELEGRAM_TOKEN')
@@ -118,7 +120,10 @@ def hello(event, context):
 
         if "Té-en-taza" in text or "Te-en-taza" in text:
             answer = TE_EN_TAZA_ANSWER
-
+        
+        if "Gorriti" in text:
+            answer = GORRITI_ANSWER
+            
         if answer:
             bot.sendMessage(chat_id=chat_id, text='\n'.join(answer))
             logger.info('Message sent')
