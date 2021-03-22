@@ -18,8 +18,8 @@ provider:
     shouldStartNameWithService: true
   environment:
     TELEGRAM_TOKEN: ${env:TELEGRAM_TOKEN}
-    CHARACTER_DEATHS: 11
-    SESSIONS: 26
+    CHARACTER_DEATHS: 12
+    SESSIONS: 27
 
 
 functions:

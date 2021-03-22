@@ -2,6 +2,7 @@ import json
 import os
 import telegram
 import logging
+from random import randint
 
 
 logger = logging.getLogger()
@@ -46,10 +47,15 @@ EULOGY_ANSWER = [
     "- Tom Bombadol. He bewitched us all with his music, but in the end he couldn't resist the power of his spells.",
     "- Vom. He kidnapped our hearts and our druid and left. Your shady ass will always be remembered.",
     "- Merion el Sibilino. He was too wise for hiw own good. We hope for his quick escape from Virion's evil hands.",
-    "- Saska. The world wasn't ready for a nice yuan-ti ready to look for a cure. We'll cry your loss.\n"
+    "- Saska. The world wasn't ready for a nice yuan-ti ready to look for a cure. We'll cry your loss.",
+    "- Kurk. Tom could not eat your soul. We'll try and bring you back to life. For Balkur.\n",
 
     "May Othgoroth have mercy on their souls."
 ]
+
+FENTHAZA_ANSWER = ["Do you mean \"Té-en-taza\"?"]
+
+TE_EN_TAZA_ANSWER = ["Give me a wisdom saving throw!"]
 
 
 def configure_telegram():
@@ -59,6 +65,14 @@ def configure_telegram():
         raise NotImplementedError
 
     return telegram.Bot(telegram_token)
+
+
+def get_dice_roll_result(text):
+    number_of_dice, type_of_dice = text.replace(' ', '').split('d')
+    sum = 0
+    for _ in range(int(number_of_dice)):
+        sum += randint(1, int(type_of_dice)+1)
+    return [str(sum)]
 
 
 def hello(event, context):
@@ -81,11 +95,20 @@ def hello(event, context):
         if '/start' in text:
             answer = START_ANSWER
 
+        if '/r' in text[:2]:
+            answer = get_dice_roll_result(text[2:])
+
         if "I wonder how we're doing in Chult." in text:
             answer = DEATH_COUNT_ANSWER
 
         if "Let's remember the departed." in text:
             answer = EULOGY_ANSWER
+
+        if "Fenthaza" in text:
+            answer = FENTHAZA_ANSWER
+
+        if "Té-en-taza" in text or "Te-en-taza" in text:
+            answer = TE_EN_TAZA_ANSWER
 
         if answer:
             bot.sendMessage(chat_id=chat_id, text='\n'.join(answer))
