@@ -48,7 +48,7 @@ EULOGY_ANSWER = [
     "- Vom. He kidnapped our hearts and our druid and left. Your shady ass will always be remembered.",
     "- Merion el Sibilino. He was too wise for hiw own good. We hope for his quick escape from Virion's evil hands.",
     "- Saska. The world wasn't ready for a nice yuan-ti ready to look for a cure. We'll cry your loss.",
-    "- Kurk. Tom could not eat your soul. We'll try and bring you back to life. For Balkur.\n",
+    "- Kurk. Tom could not eat your soul. We'll try and bring you back to life. For Valkur.\n",
 
     "May Othgoroth have mercy on their souls."
 ]
@@ -57,8 +57,22 @@ FENTHAZA_ANSWER = ["Do you mean \"Té-en-taza\"?"]
 
 TE_EN_TAZA_ANSWER = ["Give me a wisdom saving throw!"]
 
-GORRITI_ANSWER = ["Did you hear the tragedy of Gorriti the town? Its a story Tim will absolutely tell you..."]
+GORRITI_ANSWER = ["Did you ever hear the tragedy of Gorriti the town? I thought not. It’s not a story Bob's followers would tell you. Its a story Tim will absolutely tell you..."]
 
+HELP_ANSWER = [
+    "The following commands are known:",
+    "---------------------------------",
+    "/help ups!, you are already here, help command.",
+    "/r for letting me roll for you.",
+    "r/ is for reddit, not here.\n",
+    "The following strings are answered:",
+    "---------------------------------",
+    "[I wonder how we're doing in Chult.] Numbers of how many people have xabi killed in this campaing.",
+    "[Let's remember the departed.] List of all people Xabi have killed.",
+    "[Fenthaza] I think this is a typo.",
+    "[Té-en-taza] / [Te-en-taza] How you dare? Are you trying to infuriate Xabi?",
+    "[Gorriti] Tim is having a nightmare!"
+]
 
 def configure_telegram():
     telegram_token = os.environ.get('TELEGRAM_TOKEN')
@@ -108,6 +122,9 @@ def hello(event, context):
 
         if '/r' in text[:2]:
             answer = get_dice_roll_result(text[2:])
+
+        if '/help' in text[:2]:
+            answer = HELP_ANSWER
 
         if "I wonder how we're doing in Chult." in text:
             answer = DEATH_COUNT_ANSWER
