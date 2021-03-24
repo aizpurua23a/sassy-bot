@@ -127,7 +127,7 @@ def hello(event, context):
         if '/r' in text[:2]:
             answer = get_dice_roll_result(text[2:])
 
-        if '/help' in text[:2]:
+        if '/help' in text[:5]:
             answer = HELP_ANSWER
 
         if "I wonder how we're doing in Chult." in text:
