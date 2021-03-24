@@ -65,17 +65,18 @@ HELP_ANSWER = [
     "The following commands are known:",
     "---------------------------------",
     "/help ups!, you are already here, help command.",
-    "/r for letting me roll for you.",
-    "r/ is for reddit, not here.\n",
-    "The following strings are answered:",
+    "/r {number_of_dice}d{type_of_dice} {+/-} {int} for letting me roll for you.",
+    "r/ is for reddit, not for here.\n",
+    "The following strings are answered if found within the message text:",
     "---------------------------------",
-    "[I wonder how we're doing in Chult.] Numbers of how many people have xabi killed in this campaing.",
-    "[Let's remember the departed.] List of all people Xabi have killed.",
+    "[I wonder how we're doing in Chult.] Numbers of how many characters has Xabi killed in this campaign.",
+    "[Let's remember the departed.] List of all people Xabi has killed.",
     "[Fenthaza] I think this is a typo.",
     "[Té-en-taza] / [Te-en-taza] How you dare? Are you trying to infuriate Xabi?",
     "[Gorriti] Tim is having a nightmare!"
     "[El tren de las excusas] Choo choo!"
 ]
+
 
 def configure_telegram():
     telegram_token = os.environ.get('TELEGRAM_TOKEN')
