@@ -59,6 +59,8 @@ TE_EN_TAZA_ANSWER = ["Give me a wisdom saving throw!"]
 
 GORRITI_ANSWER = ["Did you ever hear the tragedy of Gorriti the town? I thought not. It’s not a story Bob's followers would tell you. Its a story Tim will absolutely tell you..."]
 
+TREN_EXCUSAS_ANSWER = ["Choo Chooooo!"]
+
 HELP_ANSWER = [
     "The following commands are known:",
     "---------------------------------",
@@ -72,6 +74,7 @@ HELP_ANSWER = [
     "[Fenthaza] I think this is a typo.",
     "[Té-en-taza] / [Te-en-taza] How you dare? Are you trying to infuriate Xabi?",
     "[Gorriti] Tim is having a nightmare!"
+    "[El tren de las excusas] Choo choo!"
 ]
 
 def configure_telegram():
@@ -141,6 +144,9 @@ def hello(event, context):
         if "Gorriti" in text:
             answer = GORRITI_ANSWER
             
+        if "tren" in text or "excusas" in text:
+            answer = TREN_EXCUSAS_ANSWER
+
         if answer:
             bot.sendMessage(chat_id=chat_id, text='\n'.join(answer))
             logger.info('Message sent')
