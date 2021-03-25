@@ -90,17 +90,31 @@ def configure_telegram():
 def get_dice_roll_result(text):
     number_of_dice, type_of_dice = text.replace(' ', '').split('d')
     type_of_dice = type_of_dice.split('+')[0].split('-')[0]
+    sign = '+'
+    appendage = 0
+    if '+' in text:
+        appendage = int(text.split('+')[1])
+    if '-' in text:
+        sign = "-"
+        appendage = int(text.split('+')[1])
+
+    if int(number_of_dice) > 10:
+        return ["Fuck you! I'm not rolling more than 10 dice!"]
+
+    if int(type_of_dice) > 100:
+        return ["Fuck you! I'm not rolling dice greater than 100! That's a ball!"]
+
+    if appendage > 100:
+        return ["Fuck you! I'm not adding/substracting numbers greater than 100! I'm not a scientific calculator!"]
 
     sum = 0
     for _ in range(int(number_of_dice)):
         sum += randint(1, int(type_of_dice))
 
-    if '+' in text:
-        return [str(sum + int(text.split('+')[1]))]
-
-    if '-' in text:
-        return [str(sum - int(text.split('-')[1]))]
-
+    if sign == "+":
+        return [str(sum + appendage)]
+    if sign == "-":
+        return [str(sum - appendage)]
     return [str(sum)]
 
 
